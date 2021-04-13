@@ -1,2 +1,2 @@
-# Nodecg-wepack-react-template
+# Nodecg-react-template
 nodecg react template

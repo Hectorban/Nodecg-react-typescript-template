@@ -17,7 +17,6 @@ dashboardNames.forEach(name => {
         template: `./src/dashboard/${name}/index.html`,
         chunks: [name]
     }));
-    dashboardPlugins.push(new webpack.HotModuleReplacementPlugin())
 });
 
 const dashboardConfig = {
@@ -44,6 +43,42 @@ const dashboardConfig = {
                     "sass-loader",
                 ],
             },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {url:false}
+                    }
+                ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.(png|svg|jpg|gif|webm)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/'
+                        }
+                    }
+                ],
+            }
         ],
     },
     resolve: {
@@ -71,7 +106,6 @@ graphicNames.forEach(name => {
         template: `./src/graphics/${name}/index.html`,
         chunks: [name]
     }));
-    graphicPlugins.push(new webpack.HotModuleReplacementPlugin())
 });
 
 const graphicsConfig = {
@@ -98,6 +132,42 @@ const graphicsConfig = {
                     "sass-loader",
                 ],
             },
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {url:false}
+                    }
+                ]
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.(png|svg|jpg|gif|webm)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/'
+                        }
+                    }
+                ],
+            }
         ],
     },
     resolve: {

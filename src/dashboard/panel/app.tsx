@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
 import NCGStore, { replicate } from "../../stores/NodecgStore";
+import React, {useEffect, useState} from 'react';
 
-
-function App() {
+const app = () => {
   const [state, setState] = useState({
     replicants: NCGStore.getReplicants(),
   });
 
   useEffect(() => {
-    replicate("champSelectUpdate");
-    replicate("champInfo");
-    replicate("summInfo");
+    replicate("Replicant"); //You can subscribe to replicants with this method
   }, []);
 
   useEffect(() => {
@@ -22,14 +19,14 @@ function App() {
   }, []);
 
   const {
-    replicants: { champSelectUpdate, champInfo, summInfo },
+    replicants: { Replicant }, //Used to take out a replicant from the replicants object
   } = state || {};
 
   return (
-    <div id="app">
-        <h1>asdgas</h1>
+    <div>
+      <h1>Hello, im one of your panels</h1>    
     </div>
   );
-}
+};
 
-export default App;
+export default app;

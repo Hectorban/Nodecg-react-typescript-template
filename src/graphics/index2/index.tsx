@@ -1,6 +1,8 @@
+/// <reference path="../../../../../types/browser.d.ts" />
+import {NodeCGConfig} from '../../../../../types/browser';
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./app";
 import { QueryClient, QueryClientProvider } from "react-query";
 import 'regenerator-runtime/runtime';
 
@@ -14,4 +16,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-module.hot.accept();
+export const config: NodeCGConfig = nodecg.config;

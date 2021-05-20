@@ -1,3 +1,4 @@
+/// <reference path="../../../../types/lib/replicant.d.ts" />
 import { EventEmitter } from 'events'
 import dispatcher from '../dispatcher'
 
@@ -8,6 +9,7 @@ import dispatcher from '../dispatcher'
 */ 
 
 class NCGStore extends EventEmitter {
+  replicants: {}
   constructor() {
     super()
     // Default values that will be overwritten on replicant declaration

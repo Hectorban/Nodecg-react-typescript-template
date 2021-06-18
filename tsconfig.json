@@ -5,7 +5,6 @@
     "module": "esnext", //commonjs destroys 'dynamic imports' which is used for code splitting
     "noImplicitAny": false,
     "preserveConstEnums": true,
-    "baseUrl": "./app",
     "jsx": "react", // process JSX
     "lib": ["dom", "es5", "es6", "es7", "es2017"],
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
@@ -21,12 +20,23 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": false,
+    "resolveJsonModule": true,
     "strict": true,
     "strictFunctionTypes": false,
     "pretty": true,
     "removeComments": true,
-    "sourceMap": true
+    "sourceMap": true,
+		"types": [],
+		"baseUrl": "./src",
+		"typeRoots": ["./"],
+    "paths": {
+      "~*": ["./*"]
+    },
   },
   "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/stores/NodecgStore.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+  ]  
 }

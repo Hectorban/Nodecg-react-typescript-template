@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Nodecg dist directories
+/dashboard
+/extension
+/graphics

@@ -1,13 +1,13 @@
+import React, {FC, useEffect, useState} from 'react';
 import NCGStore, { replicate } from "../../stores/NodecgStore";
-import React, {useEffect, useState} from 'react';
 
-const app = () => {
+const app:FC = () => {
   const [state, setState] = useState({
     replicants: NCGStore.getReplicants(),
   });
 
   useEffect(() => {
-    replicate("Replicant"); //You can subscribe to replicants with this method
+    replicate("Replicant"); // You can subscribe to replicants with this method
   }, []);
 
   useEffect(() => {
@@ -19,8 +19,9 @@ const app = () => {
   }, []);
 
   const {
-    replicants: { Replicant }, //Used to take out a replicant from the replicants object
+    replicants: { Replicant }, // Used to take out a replicant from the replicants object
   } = state || {};
+  console.log(Replicant)
 
   return (
     <div>
@@ -30,3 +31,4 @@ const app = () => {
 };
 
 export default app;
+

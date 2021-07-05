@@ -17,7 +17,6 @@ nodecg setup
 
 2. Copy/clone the repo into your `bundles` folder that is located in the root folder of your NodeCG instance.
 ```bash
-cd bundles
 git clone https://github.com/Hectorban/Nodecg-react-typescript-template.git
 cd Nodecg-react-typescript-template
 ```

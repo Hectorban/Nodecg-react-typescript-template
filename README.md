@@ -1,41 +1,42 @@
 # Nodecg-react-template
+
+This is an updated revision of [Hectorban work](https://github.com/Hectorban/Nodecg-react-typescript-template).
+
 Nodecg react template done with parcel and typescript
 
-This is a [NodeCG](http://github.com/nodecg/nodecg) bundle, powered by Typescript, React, Parcel and a Flux-like pattern system for an easy state-to-[replicant](https://nodecg.com/NodeCG.html#Replicant) management.
+This is a [NodeCG](http://github.com/nodecg/nodecg) bundle, powered by Typescript, React and Parcel.
 
-It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `^1.1.1`
+If you use this template probably you are interested in [`use-nodecg`](https://github.com/Hoishin/use-nodecg) package.
+
+It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `1.9.0`
 
 ## Getting started
-If you have NodeCG already installed, go to step 2
-1. Install NodeCG using the [CLI](https://github.com/nodecg/nodecg-cli)
-```bash
-npm install --global nodecg-cli
-mkdir nodecg
-cd nodecg
-nodecg setup
-```
 
-2. Copy/clone the repo into your `bundles` folder that is located in the root folder of your NodeCG instance.
-```bash
-git clone https://github.com/Hectorban/Nodecg-react-typescript-template.git
-cd Nodecg-react-typescript-template
-```
-3. Install dependencies and build the bundle with `npm`
+This template includes `include-nodecg` package so it is not necessary to install `nodecg-cli` before.
+
+1. Install dependencies and build the bundle with `npm`
+
 ```bash
 npm i
-npm run build
 ```
 
-4. Start nodecg
+2. To start developing run:
+
 ```bash
-cd..
-cd..
-npm start
+npm run dev
 ```
 
-5. To start developing open another terminal and run:
-```bash
-cd bundles
-cd Nodecg-react-typescript-template
-npm start
-```
+## Known issues
+
+-   Extension fails when using `export default main;` instead of using `module.exports` so we are mixing `commonjs` modules with `esmodules` and that should not be done.
+
+## TODO
+
+-   [x] Sample how to handle [Dialogs](https://www.nodecg.dev/docs/making-dialogs) and use Messages from Dialog to Dashboard panel.
+-   [ ] Sample how to use Replicants
+-   [ ] Sample how to use Messages and return errors sent from backend (extension).
+-   [ ] React Hooks to use Replicants and messages are available here: https://github.com/Hoishin/use-nodecg
+-   [ ] Testing. Check this for graphics: https://github.com/nodecg/nodecg-screenshot-tester
+-   [ ] Generator to create Dashboard.
+-   [ ] Generator to create a graphics layout.
+-   [ ] Distribute only generated html instead of all package.

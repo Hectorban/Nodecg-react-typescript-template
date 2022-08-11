@@ -6,6 +6,8 @@
     "noImplicitAny": false,
     "preserveConstEnums": true,
     "jsx": "react", // process JSX
+    "jsxImportSource": "react",
+    "isolatedModules": true,
     "lib": ["dom", "es5", "es6", "es7", "es2017"],
     "allowSyntheticDefaultImports": true, // no errors with commonjs modules interop
     "esModuleInterop": true,
@@ -26,17 +28,17 @@
     "pretty": true,
     "removeComments": true,
     "sourceMap": true,
-		"types": [],
-		"baseUrl": "./src",
-		"typeRoots": ["./"],
+    "types": [],
+    "baseUrl": "./src",
     "paths": {
-      "~*": ["./*"]
-    },
+      "/*": ["../*"],
+      "*": ["*"],
+      "nodecg/server": ["types/nodecgServer"],
+      "nodecg/browser": ["types/nodecgBrowser"],
+      "nodecg/*": ["../.nodecg/*"]
+    }
   },
   "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/stores/NodecgStore.ts"],
   "exclude": ["node_modules"],
-  "typeRoots": [
-      "node_modules/@types",
-      "src/types"
-  ]  
+  "typeRoots": ["src/types", "node_modules/@types"]
 }

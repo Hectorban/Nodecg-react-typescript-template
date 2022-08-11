@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 
-function App(): ReactElement {
+function App(): ReactElement | null {
     return (
         <div>
-            <h1>Hello, i{`'`}m one of your dashboards</h1>
+            <h1>Hello, this is one of your graphics</h1>
             <p>
                 To edit me, open {`"`}
                 <span id="path" className="monospace">

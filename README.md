@@ -26,6 +26,20 @@ npm i
 npm run dev
 ```
 
+## Add a dashboard
+1. Add the configuration in [`package.json`](https://www.nodecg.dev/docs/manifest#nodecggraphics). You can see how is added the current as example.
+2. Copy any of the current html and rename it to the given name in the `package.json` to your new panel.
+3. Copy any of the `panel` folders and rename it.
+4. Replace the path to the React loader (`index.tsx`) in your new html with the name of your folder (if you don't do this, you will load other panel 😅).
+5. Add your react components in the `app.tsx` and enjoy programming.
+
+## Add new graphics
+
+1. Add the configuration in [`package.json`](https://www.nodecg.dev/docs/manifest#nodecggraphics). You can see how is added the current one as example.
+2. Copy the current `layout-1.html` and rename it inside the same folder with the given name for the graphics html in the `package.json`.
+3. Copy the folder, remember to change in the new html the path to the React loader (should rename `layout-1` string with the name of your new folder).
+4. Add your react components in the `app.tsx` and enjoy programming.
+
 ## Known issues
 
 -   Extension fails when using `export default main;` instead of using `module.exports` so we are mixing `commonjs` modules with `esmodules` and that should not be done.

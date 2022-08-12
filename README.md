@@ -1,41 +1,56 @@
 # Nodecg-react-template
+
+This is an updated revision of [Hectorban work](https://github.com/Hectorban/Nodecg-react-typescript-template).
+
 Nodecg react template done with parcel and typescript
 
-This is a [NodeCG](http://github.com/nodecg/nodecg) bundle, powered by Typescript, React, Parcel and a Flux-like pattern system for an easy state-to-[replicant](https://nodecg.com/NodeCG.html#Replicant) management.
+This is a [NodeCG](http://github.com/nodecg/nodecg) bundle, powered by Typescript, React and Parcel.
 
-It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `^1.1.1`
+If you use this template probably you are interested in [`use-nodecg`](https://github.com/Hoishin/use-nodecg) package.
+
+It works with NodeCG versions which satisfy this [semver](https://docs.npmjs.com/getting-started/semantic-versioning) range: `1.9.0`
 
 ## Getting started
-If you have NodeCG already installed, go to step 2
-1. Install NodeCG using the [CLI](https://github.com/nodecg/nodecg-cli)
-```bash
-npm install --global nodecg-cli
-mkdir nodecg
-cd nodecg
-nodecg setup
-```
 
-2. Copy/clone the repo into your `bundles` folder that is located in the root folder of your NodeCG instance.
-```bash
-git clone https://github.com/Hectorban/Nodecg-react-typescript-template.git
-cd Nodecg-react-typescript-template
-```
-3. Install dependencies and build the bundle with `npm`
+This template includes `include-nodecg` package so it is not necessary to install `nodecg-cli` before.
+
+1. Install dependencies and build the bundle with `npm`
+
 ```bash
 npm i
-npm run build
 ```
 
-4. Start nodecg
+2. To start developing run:
+
 ```bash
-cd..
-cd..
-npm start
+npm run dev
 ```
 
-5. To start developing open another terminal and run:
-```bash
-cd bundles
-cd Nodecg-react-typescript-template
-npm start
-```
+## Add a dashboard
+1. Add the configuration in [`package.json`](https://www.nodecg.dev/docs/manifest#nodecggraphics). You can see how is added the current as example.
+2. Copy any of the current html and rename it to the given name in the `package.json` to your new panel.
+3. Copy any of the `panel` folders and rename it.
+4. Replace the path to the React loader (`index.tsx`) in your new html with the name of your folder (if you don't do this, you will load other panel 😅).
+5. Add your react components in the `app.tsx` and enjoy programming.
+
+## Add new graphics
+
+1. Add the configuration in [`package.json`](https://www.nodecg.dev/docs/manifest#nodecggraphics). You can see how is added the current one as example.
+2. Copy the current `layout-1.html` and rename it inside the same folder with the given name for the graphics html in the `package.json`.
+3. Copy the folder, remember to change in the new html the path to the React loader (should rename `layout-1` string with the name of your new folder).
+4. Add your react components in the `app.tsx` and enjoy programming.
+
+## Known issues
+
+-   Extension fails when using `export default main;` instead of using `module.exports` so we are mixing `commonjs` modules with `esmodules` and that should not be done.
+
+## TODO
+
+-   [x] Sample how to handle [Dialogs](https://www.nodecg.dev/docs/making-dialogs) and use Messages from Dialog to Dashboard panel.
+-   [ ] Sample how to use Replicants
+-   [ ] Sample how to use Messages and return errors sent from backend (extension).
+-   [ ] React Hooks to use Replicants and messages are available here: https://github.com/Hoishin/use-nodecg
+-   [ ] Testing. Check this for graphics: https://github.com/nodecg/nodecg-screenshot-tester
+-   [ ] Generator to create Dashboard.
+-   [ ] Generator to create a graphics layout.
+-   [ ] Distribute only generated html instead of all package.

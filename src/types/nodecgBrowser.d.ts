@@ -1,1 +1,1 @@
-export * from '../../../../types/browser'
+export * from 'nodecg/types/browser';

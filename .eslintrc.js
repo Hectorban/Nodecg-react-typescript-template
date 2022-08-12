@@ -37,4 +37,9 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "@typescript-eslint/triple-slash-reference": "off"
   },
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  }
 };

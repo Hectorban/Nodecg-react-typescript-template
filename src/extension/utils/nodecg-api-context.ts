@@ -1,11 +1,11 @@
-import {NodeCG} from '../../types/nodecgServer';
+import { NodeCG } from 'nodecg/server';
 
 let context: NodeCG;
 // With this module we set a context api so every module can access nodecg's api easily
 export function get(): NodeCG {
-	return context;
+  return context;
 }
 
 export function set(ctx: NodeCG): void {
-	context = ctx;
+  context = ctx;
 }

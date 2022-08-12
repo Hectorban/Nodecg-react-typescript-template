@@ -1,2 +1,2 @@
-export * from '../../../../types/server';
-export {ListenForCb} from '../../../../types/lib/nodecg-instance';
+export { ListenForCb } from 'nodecg/types/lib/nodecg-instance';
+export * from 'nodecg/types/server';

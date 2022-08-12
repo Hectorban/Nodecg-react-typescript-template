@@ -1,7 +1,7 @@
 {
-  "name": "Nodecg-react-typescript-template",
-  "version": "2.0.0",
-  "description": "nodecg react parcel template",
+  "name": "nodecg-react-typescript-template",
+  "version": "1.0.0",
+  "description": "NodeCG Bundle with Parcel, Typescript, React 18 and react-query",
   "homepage": "https://github.com/Hectorban/Nodecg-parcel-template",
   "author": "Alysanne <hectorban1234@gmail.com> (http://alysanne.dev/)",
   "files": [
@@ -12,14 +12,51 @@
     "extension"
   ],
   "scripts": {
-    "start": "start npm run watchDashboard && start npm run watchGraphics && start npm run watchExtension",
-    "watchDashboard": "parcel watch src/dashboard/*.html --out-dir dashboard --public-url ./",
-    "watchGraphics": "parcel watch src/graphics/*.html --out-dir graphics --public-url ./",
-    "watchExtension": "parcel watch src/extension/index.ts --out-dir extension --target node",
-    "buildDashboard": "parcel build src/dashboard/*.html --out-dir dashboard --public-url ./",
-    "buildGraphics": "parcel build src/graphics/*.html --out-dir graphics --public-url ./",
-    "buildExtension": "parcel build src/extension/index.ts --out-dir extension --target node",
-    "build": "start npm run buildDashboard && start npm run buildGraphics && start npm run buildExtension"
+    "predev:start": "npm run watch",
+    "dev:start": "include-nodecg start",
+    "prestart": "npm run build",
+    "start": "npm run watch",
+    "watch": "npm run watch:dashboard && npm run watch:graphics && npm run watch:extension",
+    "watch:dashboard": "parcel watch src/dashboard/*.html --dist-dir ./ --target dashboard",
+    "watch:graphics": "parcel watch src/graphics/*.html --dist-dir ./ --target graphics",
+    "watch:extension": "parcel watch --dist-dir ./ --target extension",
+    "build": "npm run build:dashboard && npm run build:graphics && npm run build:extension",
+    "build:dashboard": "parcel build src/dashboard/*.html --dist-dir ./ --target dashboard",
+    "build:graphics": "parcel build src/graphics/*.html --dist-dir ./ --target graphics",
+    "build:extension": "parcel build --dist-dir ./ --target extension",
+    "predev": "npm run clean && npm run build",
+    "dev": "include-nodecg start",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "clean": "rm -rf .parcel-cache dashboard extension graphics",
+    "prepare": "husky install",
+    "postinstall": "include-nodecg postinstall"
+  },
+  "targets": {
+    "default": {
+      "distDir": "../",
+      "publicUrl": "./",
+      "engines": {
+        "browsers": "> 1%, last 2 versions, not dead"
+      },
+      "context": "browser",
+      "outputFormat": "esmodule"
+    },
+    "dashboard": {
+      "publicUrl": "./"
+    },
+    "graphics": {
+      "publicUrl": "./"
+    },
+    "extension": {
+      "publicUrl": "./",
+      "source": "./src/extension/index.ts",
+      "context": "node",
+      "outputFormat": "commonjs",
+      "engines": {
+        "node": ">=14.0.0"
+      }
+    }
   },
   "keywords": [
     "template",
@@ -27,70 +64,91 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "^1.1.1",
+    "compatibleRange": "1.9.0",
     "dashboardPanels": [
       {
-        "name": "panel1",
-        "title": "Panel1",
-        "width": 2,
+        "name": "Panel",
+        "title": "Panel",
         "file": "panel.html",
-        "headerColor": "#525F78"
+        "width": 2,
+        "headerColor": "#525F78",
+        "workspace": "workspace",
+        "fullbleed": false,
+        "dialog": false
       },
       {
-        "name": "panel2",
-        "title": "Panel2",
-        "width": 2,
-        "file": "panel2.html",
-        "headerColor": "#525F78"
+        "name": "Panel 2",
+        "title": "Panel Secondary",
+        "file": "panel-2.html",
+        "width": 4,
+        "headerColor": "#525F78",
+        "workspace": "workspace",
+        "fullbleed": false,
+        "dialog": false
       },
       {
-        "name": "panel3",
-        "title": "Panel3",
-        "width": 2,
-        "file": "panel3.html",
-        "headerColor": "#525F78"
+        "name": "custom-dialog-name",
+        "title": "Dialog",
+        "file": "dialog.html",
+        "width": 4,
+        "headerColor": "#525F78",
+        "fullbleed": false,
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "Save",
+            "type": "confirm"
+          },
+          {
+            "name": "Cancel",
+            "type": "dismiss"
+          },
+          {
+            "name": "Close",
+            "type": "dismiss"
+          }
+        ]
       }
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "layout-1.html",
         "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "index2.html",
-        "width": 1920,
-        "height": 1080
-      },
-      {
-        "file": "index3.html",
-        "width": 1920,
-        "height": 1080
+        "height": 1080,
+        "singleInstance": false
       }
     ]
   },
   "license": "MIT",
   "devDependencies": {
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "@typescript-eslint/eslint-plugin": "^4.24.0",
-    "@typescript-eslint/parser": "^4.24.0",
-    "eslint": "^7.25.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "parcel-bundler": "^1.12.5",
-    "prettier": "2.2.1",
-    "typescript": "^3.3.3"
+    "@parcel/transformer-svg-react": "2.7.0",
+    "@parcel/transformer-typescript-tsc": "2.7.0",
+    "@parcel/validator-typescript": "2.7.0",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
+    "@typescript-eslint/eslint-plugin": "5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
+    "eslint": "8.21.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "events": "3.3.0",
+    "husky": "8.0.1",
+    "include-nodecg": "0.0.3",
+    "parcel": "2.7.0",
+    "parcel-resolver-ts-base-url": "1.1.5",
+    "parcel-resolver-tspaths": "0.0.9",
+    "prettier": "2.7.1",
+    "process": "0.11.10",
+    "typescript": "4.7.4"
   },
   "dependencies": {
-    "flux": "^4.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-query": "^3.13.8",
-    "regenerator-runtime": "^0.13.7"
+    "@tanstack/react-query": "4.0.10",
+    "nodecg": "1.9.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }

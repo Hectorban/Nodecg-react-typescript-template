@@ -12,7 +12,7 @@
     "extension"
   ],
   "scripts": {
-    "predev:start": "npm run watch",
+    "predev:start": "npm run build",
     "dev:start": "include-nodecg start",
     "prestart": "npm run build",
     "start": "npm run watch",
@@ -128,7 +128,7 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.33.0",
     "@typescript-eslint/parser": "5.33.0",
-    "eslint": "8.21.0",
+    "eslint": "8.22.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",

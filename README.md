@@ -23,6 +23,12 @@ npm i
 2. To start developing run:
 
 ```bash
+npm run dev:start
+```
+
+If you want to force rebuild when start (this will delete build directories):
+
+```bash
 npm run dev
 ```
 

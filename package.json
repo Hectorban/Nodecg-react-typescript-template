@@ -1,5 +1,6 @@
 {
   "name": "nodecg-react-typescript-template",
+  "private": true,
   "version": "1.0.0",
   "description": "NodeCG Bundle with Parcel, Typescript, React 18 and react-query",
   "homepage": "https://github.com/Hectorban/Nodecg-parcel-template",

@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     'plugin:react/recommended',
+    "plugin:react/jsx-runtime",
     'airbnb',
     'prettier'
   ],
@@ -19,13 +20,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ["import", "react", "react-hooks", "jsx-a11y", "@typescript-eslint"],
   globals: {
     'nodecg': true,
-    "NodeCG": true
+    "NodeCG": true,
+    React: true
   },
   rules: {
     "array-callback-return": "off",
@@ -35,11 +34,22 @@ module.exports = {
     "global-require": "off",
     "no-use-before-define": "off",
     "react/jsx-filename-extension": "off",
+    "react/jsx-uses-react": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/triple-slash-reference": "off"
   },
   settings: {
     react: {
       version: 'detect'
-    }
+    },
+    "import/resolver": {
+      [require.resolve("eslint-import-resolver-node")]: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+      },
+      [require.resolve("eslint-import-resolver-typescript")]: {
+        alwaysTryTypes: true,
+      },
+    },
   }
 };

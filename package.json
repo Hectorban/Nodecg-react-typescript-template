@@ -1,5 +1,6 @@
 {
   "name": "nodecg-react-typescript-template",
+  "private": true,
   "version": "1.0.0",
   "description": "NodeCG Bundle with Parcel, Typescript, React 18 and react-query",
   "homepage": "https://github.com/Hectorban/Nodecg-parcel-template",
@@ -12,7 +13,7 @@
     "extension"
   ],
   "scripts": {
-    "predev:start": "npm run watch",
+    "predev:start": "npm run build",
     "dev:start": "include-nodecg start",
     "prestart": "npm run build",
     "start": "npm run watch",
@@ -30,7 +31,7 @@
     "lint:fix": "eslint --fix ./src",
     "clean": "rm -rf .parcel-cache dashboard extension graphics",
     "prepare": "husky install",
-    "postinstall": "include-nodecg postinstall"
+    "postinstall": "node ./bin/postinstall.mjs"
   },
   "targets": {
     "default": {
@@ -126,14 +127,15 @@
     "@parcel/validator-typescript": "2.7.0",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@typescript-eslint/eslint-plugin": "5.33.0",
-    "@typescript-eslint/parser": "5.33.0",
-    "eslint": "8.21.0",
+    "@typescript-eslint/eslint-plugin": "5.35.1",
+    "@typescript-eslint/parser": "5.35.1",
+    "eslint": "8.22.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
+    "eslint-import-resolver-typescript": "3.5.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-jsx-a11y": "6.6.1",
-    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react": "7.31.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "events": "3.3.0",
     "husky": "8.0.1",

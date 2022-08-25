@@ -23,8 +23,30 @@ npm i
 2. To start developing run:
 
 ```bash
+npm run dev:start
+```
+
+If you want to force rebuild when start (this will delete build directories):
+
+```bash
 npm run dev
 ```
+
+## Use Bun.sh instead of node
+
+If you replace the `package.json` for using [`bun`](https://bun.sh) in the postinstall it will replace node for bun in the nodecg which improves speed. You can force this behaviour by using:
+
+```bash
+npm run postinstall -- --bun
+```
+
+Restore to use node back is possible by executing:
+
+```bash
+npm run postinstall -- --node
+```
+
+**IMPORTANT** NodeCG runs smootly and faster with bun, but `npm install` it is necessary to execute it in nodecg (bundles can use `bun install`) because there is still and old dependency with json-schema directly installing from GitHub which does not have support yet in bun.sh (see [#82 of bun.sh issues](https://github.com/oven-sh/bun/issues/82))
 
 ## Add a dashboard
 1. Add the configuration in [`package.json`](https://www.nodecg.dev/docs/manifest#nodecggraphics). You can see how is added the current as example.

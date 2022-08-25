@@ -38,7 +38,7 @@
       "nodecg/*": ["../.nodecg/*"]
     }
   },
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/stores/NodecgStore.ts"],
-  "exclude": ["node_modules"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+  "exclude": ["node_modules", ".nodecg"],
   "typeRoots": ["src/types", "node_modules/@types"]
 }
